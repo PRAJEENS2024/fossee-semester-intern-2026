@@ -5,7 +5,8 @@ import Upload from '../components/Dashboard/Upload';
 import Summary from '../components/Dashboard/Summary';
 import Charts from '../components/Dashboard/Charts';
 import History from '../components/Dashboard/History';
-import TablePreview from '../components/Dashboard/TablePreview'; // <--- 1. NEW IMPORT
+import TablePreview from '../components/Dashboard/TablePreview';
+import SideStats from '../components/Dashboard/SideStats';
 
 const DashboardPage = () => {
     const [summaryData, setSummaryData] = useState(null);
@@ -50,39 +51,40 @@ const DashboardPage = () => {
         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300 font-sans">
             <Header />
             
-            <main className="container mx-auto px-6 pt-24 pb-8">
+            <main className="container mx-auto px-6 pt-24 pb-12">
                 {error && (
                     <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded shadow-sm">
                         {error}
                     </div>
                 )}
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* --- TOP SECTION (Split Layout) --- */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-8">
+                    
                     {/* Left Sidebar */}
-                    <div className="space-y-8">
+                    <div className="space-y-6">
                         <Upload onUploadSuccess={handleUploadSuccess} />
+                        
                         <History 
                             historyData={historyData} 
                             onLoadItem={loadHistoryItem} 
                             currentItemId={summaryData?.id}
                         />
+
+                        {summaryData && (
+                            <SideStats data={summaryData.summary_stats} />
+                        )}
                     </div>
 
-                    {/* Main Content */}
+                    {/* Right Main Content */}
                     <div className="lg:col-span-2 space-y-8">
                         {summaryData ? (
                             <>
-                                {/* Summary Cards */}
                                 <Summary summary={summaryData.summary_stats} fileName={summaryData.file_name} />
-                                
-                                {/* Visual Charts */}
                                 <Charts 
                                     summary={summaryData.summary_stats} 
                                     rawData={summaryData.summary_stats.raw_data} 
                                 />
-
-                                {/* 2. NEW: Data Preview Table */}
-                                <TablePreview data={summaryData.summary_stats.raw_data} />
                             </>
                         ) : (
                             <div className="flex flex-col items-center justify-center h-64 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 text-center">
@@ -92,6 +94,14 @@ const DashboardPage = () => {
                         )}
                     </div>
                 </div>
+
+                {/* --- BOTTOM SECTION (Full Width) --- */}
+                {/* We moved this OUTSIDE the grid so it spans the full width */}
+                {summaryData && (
+                    <div className="w-full animate-fade-in-up">
+                        <TablePreview data={summaryData.summary_stats.raw_data} />
+                    </div>
+                )}
             </main>
         </div>
     );
