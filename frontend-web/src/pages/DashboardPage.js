@@ -1,4 +1,3 @@
-// frontend-web/src/pages/DashboardPage.js
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../api/axiosConfig';
 import Header from '../components/Layout/Header';
@@ -6,6 +5,7 @@ import Upload from '../components/Dashboard/Upload';
 import Summary from '../components/Dashboard/Summary';
 import Charts from '../components/Dashboard/Charts';
 import History from '../components/Dashboard/History';
+import TablePreview from '../components/Dashboard/TablePreview'; // <--- 1. NEW IMPORT
 
 const DashboardPage = () => {
     const [summaryData, setSummaryData] = useState(null);
@@ -50,7 +50,6 @@ const DashboardPage = () => {
         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300 font-sans">
             <Header />
             
-            {/* FIX IS HERE: Changed 'py-8' to 'pt-24 pb-8' to clear the fixed header */}
             <main className="container mx-auto px-6 pt-24 pb-8">
                 {error && (
                     <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded shadow-sm">
@@ -73,11 +72,17 @@ const DashboardPage = () => {
                     <div className="lg:col-span-2 space-y-8">
                         {summaryData ? (
                             <>
+                                {/* Summary Cards */}
                                 <Summary summary={summaryData.summary_stats} fileName={summaryData.file_name} />
+                                
+                                {/* Visual Charts */}
                                 <Charts 
                                     summary={summaryData.summary_stats} 
                                     rawData={summaryData.summary_stats.raw_data} 
                                 />
+
+                                {/* 2. NEW: Data Preview Table */}
+                                <TablePreview data={summaryData.summary_stats.raw_data} />
                             </>
                         ) : (
                             <div className="flex flex-col items-center justify-center h-64 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 text-center">
