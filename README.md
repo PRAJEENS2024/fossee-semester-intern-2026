@@ -29,7 +29,7 @@ Users can upload CSV datasets to generate instant analytics, interactive charts,
 ## 🚀 Live Demos
 
 * **Web App (Netlify):** [https://chem-sight.netlify.app](https://chem-sight.netlify.app)
-* **Backend API (Render):** [https://chemical-api-74nj.onrender.com/api/ping/](https://chemical-api-74nj.onrender.com/api/ping/)
+* **Backend API (Render):** [https://chemical-api-2026.onrender.com/admin/](https://chemical-api-2026.onrender.com/admin/)
 
 > **Note:** The backend is hosted on a free instance. Please click the **Backend API** link first to "wake it up" (it may take 50 seconds to load initially).
 
