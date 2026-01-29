@@ -23,9 +23,7 @@ Users can upload CSV datasets to generate instant analytics, interactive charts,
 
 | **Web Dashboard** | **Desktop Application** |
 | :---: | :---: |
-| ![Web Dashboard](https://via.placeholder.com/600x350?text=Web+Dashboard+Screenshot) | ![Desktop App](https://via.placeholder.com/600x350?text=Desktop+App+Screenshot) |
-*(Add your actual screenshots here)*
-
+| ![Web Dashboard](./screenshots/web-dashboard.png) | ![Desktop App](./screenshots/desktop-app.png) |
 ---
 
 ## 🚀 Live Demos
@@ -38,8 +36,8 @@ Users can upload CSV datasets to generate instant analytics, interactive charts,
 ### 🔐 Demo Credentials
 To test the live system, you can use these guest credentials or create a new account:
 
-* **Username:** `admin`
-* **Password:** `ChemSight@2026`
+* **Username:** `Admin`
+* **Password:** `Admin123`
 
 ---
 
@@ -143,7 +141,7 @@ cd frontend-desktop
 pip install -r requirements.txt
 
 # Run App
-python main.py
+python app.py
 
 ```
 
@@ -165,8 +163,4 @@ python main.py
 ## 📝 Submission Details
 
 * **Repository:** [GitHub Link](https://github.com/PRAJEENS2024/fossee-semester-intern-2026)
-* **Video Demo:** 
-
-```
-
-```
+* **Video Demo:** [Watch on Google Drive](https://drive.google.com/file/d/1OYbGRAzsZ9zYaDBErjtl26GNhSygG-eE/view?usp=drive_link)
