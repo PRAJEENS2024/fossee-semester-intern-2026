@@ -55,7 +55,7 @@ fossee-semester-intern-2026/
 │   ├── public/
 │   └── package.json
 ├── frontend-desktop/         # PyQt5 Desktop Application
-│   ├── main.py               # Entry Point
+│   ├── app.py               # Entry Point
 │   └── requirements.txt
 ├── sample_data_batch_2.csv   # Sample Dataset for Testing
 └── README.md
